@@ -1,5 +1,7 @@
 import './globals.css'
+import NavMenu from '@/components/NavMenu'
 import { Inter } from 'next/font/google'
+import AuthProvider from './AuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,8 +16,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+
+      <html lang="en">
+        <body className={inter.className}>
+          <AuthProvider>
+            <NavMenu />
+            <main className='container py-6 text-black'>
+              {children}
+            </main>
+          </AuthProvider>
+        </body>
+      </html>
+    
   )
 }
