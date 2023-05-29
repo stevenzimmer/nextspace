@@ -16,17 +16,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-
+    <AuthProvider>
       <html lang="en">
         <body className={inter.className}>
-          <AuthProvider>
-            <NavMenu />
-            <main className='container py-6 text-black'>
-              {children}
-            </main>
-          </AuthProvider>
+          <NavMenu />
+          <main className='container py-6 text-black'>
+            {children}
+          </main>
         </body>
       </html>
-    
+    </AuthProvider>
   )
 }

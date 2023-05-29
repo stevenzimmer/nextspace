@@ -21,7 +21,7 @@ export default function NavMenu() {
             {links.map((link, i) => {
               return(
                 <li className="flex items-center px-2" key={link.url}>
-                  <Link href={link.url}>{link.text}</Link>
+                  <Link href={`/${link.url}`}>{link.text}</Link>
                 </li>
               )
             })}

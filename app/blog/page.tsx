@@ -1,7 +1,7 @@
 
 import { getServerSession } from 'next-auth';
-import { redirect } from 'next/navigation';
 import Link from 'next/link';
+
 interface Post {
   title: string;
   content: string;
@@ -13,17 +13,14 @@ interface Props {
     slug: string
   };
 }
-export default async function Home({ params } : Props) {
-  const session = await getServerSession();
+export default async function BlogHome({ params } : Props) {
 
-  console.log({session});
-  if(!session) {
-    return <div className='bg-red-200 p-6 rounded-md shadow text-center font-bold text-xl'>Please sign in to get started.</div>
-  }
 
   const posts: Post[] = await fetch('http://localhost:3000/api/content').then((res) => res.json());
 
   return (
+    <>
+    <h1 className='text-[32px] font-bold mb-6'>Recent Blog Posts</h1>
     <div className="flex flex-wrap">
 {posts.map((post) => {
   return (
@@ -34,5 +31,6 @@ export default async function Home({ params } : Props) {
   )
 })}
     </div>
+    </>
   )
 }

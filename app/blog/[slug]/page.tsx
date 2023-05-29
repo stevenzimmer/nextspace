@@ -23,14 +23,17 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPostPage({ params } : Props) {
+  // Deduped 
   const posts: Post[] = await fetch('http://localhost:3000/api/content').then((res) => res.json());
-  // console.log({posts});
 
-  const post = posts.find((post) => post.slug === params.slug)!;
+
+  const post = posts.find((post) => post.slug === params.slug)!; // Non-null assertion operator (typescript)
+
+
   console.log({post});
   return (
     <div>
-      <h1>
+      <h1 className="text-[32px] font-bold">
         {post.title}
       </h1>
       <p>
