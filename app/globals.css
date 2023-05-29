@@ -25,6 +25,8 @@ body {
   /* font-family: verdana, arial, sans-serif, helvetica; */
 }
 
+input,
+
 
 .container {
   width: 810px;
@@ -60,6 +62,11 @@ a {
 label, textarea, input {
   display: block;
   margin-bottom: 0.5rem;
+  
+}
+
+textarea, input {
+  @apply bg-white border p-2 rounded shadow;
 }
 
 @media (prefers-color-scheme: dark) {
